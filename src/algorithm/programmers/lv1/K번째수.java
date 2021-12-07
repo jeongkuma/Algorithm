@@ -11,21 +11,10 @@ public class K번째수 {
         int[] answer = {};
         answer = new int[commands.length];
 
-//        array = new int[]{1, 5, 2, 6, 3, 7, 4};
-//        commands = new int[][]{
-//                {2, 5, 3},
-//                {4, 4, 1},
-//                {1, 7, 3}
-//        };
-
-
         for (int i = 0; i < commands.length; i++) {
-            int pos = commands[i][0];
-            int len = commands[i][1];
-            int cnt = commands[i][2];
-            int[] newArr = Arrays.copyOfRange(array, pos - 1, len);
+            int[] newArr = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]);
             Arrays.sort(newArr);
-            answer[i] = newArr[cnt - 1];
+            answer[i] = newArr[commands[i][2] - 1];
 
         }
         return answer;
