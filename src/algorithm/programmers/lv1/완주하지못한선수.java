@@ -1,6 +1,10 @@
 package algorithm.programmers.lv1;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
@@ -37,20 +41,137 @@ public class 완주하지못한선수 {
 //        String[] completion = {"josipa", "filipa", "marina", "nikola"};
 
         String[] participant = {"mislav", "stanko", "mislav", "ana"};
-        String[] completion = {"stanko", "ana", "mislav"};
+        String[] completion = {"stanko", "ana", "mislav", "mislav"};
 
         System.out.println(practice(participant, completion));
 
     }
+    public static String solution(String[] participant, String[] completion) {
+        String answer = "";
+
+        HashMap<String, Integer> temp = new HashMap<>();
+        for (String name : participant) {
+            if (temp.containsKey(name)) {
+                temp.put(name, temp.get(name) + 1);
+            } else {
+                temp.put(name, 1);
+            }
+        }
+
+        for (String name : completion) {
+            if (temp.get(name) == 1) {
+                temp.remove(name);
+            } else {
+                temp.put(name, temp.get(name) - 1);
+            }
+        }
+
+        answer = temp.keySet().toString().substring(1, temp.keySet().toString().length() - 1);
+
+        return answer;
+    }
+
     public static String practice(String[] participant, String[] completion) {
         String answer = "";
 
+        HashMap<String, Integer> temp = new HashMap<>();
         for (String name : participant) {
-            if (!Arrays.stream(completion).anyMatch(c -> c.equals(name))) {
-                answer = name;
+            if (temp.containsKey(name)) {
+                temp.put(name, temp.get(name) + 1);
+            } else {
+                temp.put(name, 1);
             }
-
         }
+
+        for (String name : completion) {
+            if (temp.get(name) == 1) {
+                temp.remove(name);
+            } else {
+                temp.put(name, temp.get(name) - 1);
+            }
+        }
+
+        System.out.println("temp keySet :: after");
+
+        for (String name : temp.keySet()) {
+            System.out.println(name + " : " + temp.get(name));
+        }
+
+        answer = temp.keySet().toString().substring(1, temp.keySet().toString().length() - 1);
+
+        return answer;
+
+//        String temp[] = new String[participant.length];
+//
+//        int i = 0;
+//        for (String part : participant) {
+//            boolean chk = false;
+//            for (String comp : completion) {
+//                if (part.equals(comp)) {
+//                    chk = true;
+//                    for (String t : temp) {
+//                        if (part.equals(t)) {
+//                            return part;
+//                        }
+//                    }
+//                    temp[i] = part;
+//                    i++;
+//                }
+//            }
+//            if (!chk) {
+//                return part;
+//            }
+//        }
+
+//        for (String comp : completion) {
+//            int cnt = 0;
+//            for (String part : participant) {
+//                if (part.equals(comp)) {
+//                    cnt++;
+//                }
+//            }
+//            if (cnt > 1 || cnt == 0) {
+//                answer = comp;
+//            }
+//        }
+
+
+
+//        for (String name : participant) {
+//            if (!Arrays.stream(completion).anyMatch(c -> c.equals(name))) {
+//                answer = name;
+//            }
+//        }
+
+//        for (int i = 0; i < participant.length; i++) {
+//            for (int j = 0; j < completion.length; j++) {
+//                if (participant[i].equals(completion[j])) {
+//                    temp[i] = participant[i];
+//                    break;
+//                }
+//            }
+//        }
+//
+//
+//
+//        for (String name : temp) {
+//            System.out.println(name);
+//        }
+
+//        for (String parti : participant) {
+//            for (String comp : completion) {
+//                if (parti.equals(comp)) {
+//                    temp[i] = parti;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        for (String parti : participant) {
+//            for (String t : temp) {
+//
+//            }
+//        }
 
 //        for (String name : participant) {
 //            if (!Arrays.stream(completion).anyMatch(c -> c.equals(name))) {
@@ -65,6 +186,5 @@ public class 완주하지못한선수 {
 //            pos++;
 //
 //        }
-        return answer;
     }
 }
