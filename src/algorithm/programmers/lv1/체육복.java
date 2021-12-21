@@ -48,11 +48,20 @@ public class 체육복 {
      * 3번 학생이 2번 학생이나 4번 학생에게 체육복을 빌려주면 학생 4명이 체육수업을 들을 수 있습니다.
      */
     public static int practice(int n, int[] lost, int[] reserve) {
-        int answer = n - lost.length;
-
         Arrays.sort(lost);
         Arrays.sort(reserve);
+        int answer = n - lost.length;
 
+        //잃어버린 학생이 여분 체육복을 가지고 있을 때,
+        for(int i=0; i<lost.length; i++){
+            for(int j=0; j<reserve.length; j++){
+                if(lost[i]==reserve[j]){
+                    lost[i] = reserve[j] = -1;
+                    answer ++;
+                    break;
+                }
+            }
+        }
 
         // 전체 학생 Loop
         for (int i = 1; i <= n; i++) {
@@ -74,9 +83,6 @@ public class 체육복 {
             }
 
         }
-
-
-        System.out.println("answer   ::  " + answer);
         return answer;
 
 //        int answer = n - lost.length;
@@ -122,8 +128,20 @@ public class 체육복 {
 //        return answer;
     }
     public int solution(int n, int[] lost, int[] reserve) {
-        int answer = 0;
-        int getCnt = 0;
+        Arrays.sort(lost);
+        Arrays.sort(reserve);
+        int answer = n - lost.length;
+
+        // 잃어버린 학생이 여분 체육복을 가지고 있을 때,
+        for(int i=0; i<lost.length; i++){
+            for(int j=0; j<reserve.length; j++){
+                if(lost[i]==reserve[j]){
+                    lost[i] = reserve[j] = -1;
+                    answer ++;
+                    break;
+                }
+            }
+        }
 
         // 전체 학생 Loop
         for (int i = 1; i <= n; i++) {
@@ -131,25 +149,20 @@ public class 체육복 {
             for (int j = 0; j < lost.length; j++) {
                 // 분실 학생일 경우
                 if (i == lost[j]) {
-                    // 빌리기 가능 여부 변수 선언
                     // 여분 학생 Loop
                     for (int k = 0; k < reserve.length; k++) {
-                        // 분실 학생의 앞뒤로 여분 학생이 있는 경우 && 여분, 분실 학생이 같지 않을 경우
-//                        if ((lost[j] - 1 == reserve[k] || lost[j] + 1 == reserve[k]) && lost[j] != reserve[k]) {
-                        if ((lost[j] - 1 == reserve[k] || lost[j] + 1 == reserve[k]) && lost[j] != reserve[k]) {
+                        // 분실 학생의 앞뒤로 여분 학생이 있는 경우
+                        if (lost[j] - 1 == reserve[k] || lost[j] + 1 == reserve[k]) {
                             // 여분 학생 빌리기 완료 처리
                             reserve[k] = 0;
-                            getCnt++;
+                            answer++;
                             break;
                         }
                     }
-
                 }
             }
 
         }
-
-        answer = n - lost.length + getCnt;
         return answer;
     }
 
