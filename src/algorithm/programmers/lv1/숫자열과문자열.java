@@ -121,7 +121,34 @@ public class 숫자열과문자열 {
     }
 
     public int solution(String s) {
-        int answer = 0;
-        return answer;
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("zero", 0);
+        map.put("one",  1);
+        map.put("two",  2);
+        map.put("three",3);
+        map.put("four", 4);
+        map.put("five", 5);
+        map.put("six",  6);
+        map.put("seven",7);
+        map.put("eight",8);
+        map.put("nine", 9);
+
+        String word = "";
+        String result = "";
+        for (int i = 0; i < s.length(); i++) {
+            char tmp = s.charAt(i);
+
+            if (Character.isDigit(tmp)) {
+                result += tmp;
+            } else {
+                word += tmp;
+                if (null != map.get(word)) {
+                    result += map.get(word);
+                    word = "";
+                }
+            }
+        }
+
+        return Integer.parseInt(result);
     }
 }
