@@ -60,10 +60,24 @@ public class 숫자열과문자열 {
 
     public static void main(String[] args) {
 
-        practice("one4seveneight");
+//        practice("one4seveneight");
 //        practice("23four5six7");
 //        practice("2three45sixseven");
 
+        System.out.println(exceptionCase("onezeroonezeroonezeroonezeroonezeroonezeroonezero"));
+
+    }
+
+    public static int exceptionCase(String s) {
+
+        String[] digits = {"0","1","2","3","4","5","6","7","8","9"};
+        String[] alphabets = {"zero","one","onez","oneze","onezer","onezero","six","seven","eight","nine"};
+
+        for(int i=0; i<10; i++){
+            s = s.replaceAll(alphabets[i],digits[i]);
+        }
+
+        return Integer.parseInt(s);
     }
 
     public static int practice(String s) {
