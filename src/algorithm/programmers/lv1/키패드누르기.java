@@ -1,7 +1,8 @@
 package algorithm.programmers.lv1;
 
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -66,41 +67,143 @@ public class 키패드누르기 {
 
     public static void main(String[] args) {
 
-        int[] numbers = new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5};
 //        int[] numbers = new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2};
 //        int[] numbers = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+        int[] numbers = new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5};
 
 
-        String hand = "left";
-//        String hand = "right";
+//        String hand = "left";
+        String hand = "right";
 
         practice(numbers, hand);
     }
 
     public static String practice(int[] numbers, String hand) {
-        String answer = "";
 
-//        int[][] keypad = new int[][]{{1,2,3,},{4,5,6},{7,8,9},{10,0,11}};
+        StringBuilder sb = new StringBuilder();
 
         /**
          * 1   2   3
          * 4   5   6
          * 7   8   9
-         * *   0   #
+         * 10  11  12
          */
-        String[][] keypad = new String[][]{{"1","2","3",},{"4","5","6"},{"7","8","9"},{"*","0","#"}};
+        // numbers = 1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5
+        int lPos = 10;
+        int rPos = 12;
+        for (int number : numbers) {
+            String getHand = getHand(number);
+            switch (getHand) {
+                case "L":
+                    sb.append("L");
+                    lPos = number;
+                    break;
+                case "R":
+                    sb.append("R");
+                    rPos = number;
+                    break;
+                default:
+                    String path = getPath(lPos, rPos, number);
+                    switch (path) {
+                        case "L":
+                            sb.append("L");
+                            lPos = number;
+                            break;
+                        case "R":
+                            sb.append("R");
+                            rPos = number;
+                            break;
+                        default:
+                            switch (hand) {
+                                case "left":
+                                    sb.append("L");
+                                    lPos = number;
+                                    break;
+                                case "right":
+                                    sb.append("R");
+                                    rPos = number;
+                                    break;
+                            }
+                    }
+            }
+        }
+//        for (int i = 0; i < numbers.length; i++) {
+//            String num = getHand(numbers[i]);
+//
+//            switch (num) {
+//                case "L":
+//                    leftPos = num;
+//                    answer += num;
+//                    break;
+//                case "R":
+//                    rightPos = num;
+//                    answer += num;
+//                    break;
+//                default:
+//
+//                    break;
+//            }
+//        }
 
-        ArrayList<String> list = new ArrayList();
 
-        list.add("1");
+        System.out.println(sb);
+        return sb.toString();
 
-
-        return answer;
+//        int[][] keypad = new int[][]{{1,2,3,},{4,5,6},{7,8,9},{10,0,11}};
     }
 
     public String solution(int[] numbers, String hand) {
         String answer = "";
         return answer;
     }
+    static String getPath(int lPos, int rPos, int num) {
+
+        String pos = "";
+
+        lPos = lPos == 0 ? 11 : lPos;
+        rPos = rPos == 0 ? 11 : rPos;
+        num = num == 0 ? 11 : num;
+
+        int lx = (lPos - 1) / 3;
+        int ly = (lPos - 1) % 3;
+
+        int rx = (rPos - 1) / 3;
+        int ry = (rPos - 1) % 3;
+
+        int nx = num / 3;
+        int ny = 1;
+
+        int lPath = Math.abs(lx - nx) + Math.abs(ly - ny);
+        int rPath = Math.abs(rx - nx) + Math.abs(ry - ny);
+
+
+        if (lPath > rPath) {
+            pos = "R";
+        } else if (lPath < rPath) {
+            pos = "L";
+        }
+
+        return pos;
+    }
+
+
+    static String getHand(int number) {
+        String hand = "";
+
+        Integer left[] = {1, 4, 7};
+        Integer right[] = {3, 6, 9};
+
+        List<Integer> lefts = Arrays.asList(left);
+        List<Integer> rights = Arrays.asList(right);
+
+        if (lefts.contains(number)) {
+            hand = "L";
+        } else if (rights.contains(number)) {
+            hand = "R";
+        }
+
+        return hand;
+    }
+
 
 }
