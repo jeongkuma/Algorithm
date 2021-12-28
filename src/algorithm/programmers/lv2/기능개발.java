@@ -122,36 +122,6 @@ public class 기능개발 {
     }
 
     public int[] solution(int[] progresses, int[] speeds) {
-//        ArrayList<Integer> list = new ArrayList<>();
-//        ArrayList<Integer> setList = new ArrayList<>();
-//
-//        for (int i = 0; i < progresses.length; i++) {
-//            int task = 0;
-//            for (int j = progresses[i]; j <= 100; j += speeds[i]) {
-//                if (j == 100) break;
-//                task++;
-//            }
-//            list.add(task);
-//        }
-//
-//        int stackCnt = 1;
-//        for (int i = 0; i < list.size(); i++) {
-//            if (i != list.size() - 1) {
-//                if (list.get(i) < list.get(i + 1)) {
-//                    setList.add(stackCnt);
-//                    stackCnt = 1;
-//                } else {
-//                    ++stackCnt;
-//                }
-//            } else {
-//                setList.add(stackCnt);
-//            }
-//        }
-//
-//        int[] answer = new int[setList.size()];
-//        for (int s = 0; s < setList.size(); s++) {
-//            answer[s] = setList.get(s);
-//        }
 
         Stack<Integer> stack = new Stack<Integer>();
 
