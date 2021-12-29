@@ -134,7 +134,7 @@ public class 완주하지못한선수 {
 
 
 //        for (String name : participant) {
-//            if (!Arrays.stream(completion).anyMatch(c -> c.equals(name))) {
+//            if (!Arrays.stream(completion).anyMatch(c -> c.equals(name))) {'성
 //                answer = name;
 //            }
 //        }
