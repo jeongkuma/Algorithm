@@ -1,5 +1,8 @@
 package algorithm.programmers.lv2;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  *
  * 공부해라
@@ -31,7 +34,8 @@ public class 타겟넘버 {
 
     public static void main(String[] args) {
 
-        practice(new int[]{1, 1, 1, 1, 1}, 3);
+//        practice(new int[]{1, 1, 1, 1, 1}, 3);
+        solution(new int[]{1, 1, 1, 1, 1}, 3);
     }
 
 
@@ -60,11 +64,39 @@ public class 타겟넘버 {
 
 
 
-    public int solution(int[] numbers, int target) {
+    public static int solution(int[] numbers, int target) {
         int answer = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
 
+
+        int idx = 0;
+
+        while(!queue.isEmpty()){
+            int len = queue.size();
+
+            for(int i = 0; i < len; i++){
+                int num = queue.poll();
+
+                if (idx == numbers.length) {
+                    if (target == num){
+                        answer++;
+                    }
+                    continue;
+                }
+
+                queue.offer(num - numbers[idx]); // -1
+                queue.offer(num + numbers[idx]); // 1
+
+            }
+
+            idx++;
+
+
+        }
 
 
         return answer;
     }
+
 }
