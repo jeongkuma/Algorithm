@@ -36,4 +36,15 @@ public class 프린터 {
     public static void main(String[] args) {
 
     }
+
+    public static int practice(int[] priorities, int location) {
+        int answer = 0;
+        return answer;
+    }
+
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        return answer;
+    }
+
 }
