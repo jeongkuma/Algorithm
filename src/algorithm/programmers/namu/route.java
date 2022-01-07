@@ -26,8 +26,10 @@ public class route {
 
     public static int solution(TreeNode root) {
 //        dfs(root, 1);
+        Queue<TreeNode> que = new LinkedList<>();
+        bfs(root, que);
 
-        bfs(root);
+        System.out.println(que.size());
 
 
         return answer;
@@ -43,20 +45,17 @@ public class route {
         }
     }
 
-    public static void bfs(TreeNode root) {
+    public static void bfs(TreeNode root, Queue<TreeNode> que) {
 
-        Queue<TreeNode> que = new LinkedList<>();
+
         que.offer(root);
 
         if (root.right != null) {
-            bfs(root
-
-
-                    .right);
+            bfs(root.right, que);
         }
 
         if (root.left != null) {
-            bfs(root.left);
+            bfs(root.left, que);
         }
 
         answer = que.size();
