@@ -38,8 +38,6 @@ package algorithm.programmers.lv2;
 public class 프린터 {
     public static void main(String[] args) {
         practice(new int[]{2, 1, 3, 2}, 2);
-//        practice(new int[]{1, 1, 9, 1, 1, 1}, 0);
-//        practice(new int[]{2, 1, 3, 2}, 2);
     }
 
     public static int practice(int[] priorities, int location) {
