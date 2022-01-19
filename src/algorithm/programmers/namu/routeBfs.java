@@ -8,4 +8,8 @@ public class routeBfs {
     public static void practice(String[] test) {
 
     }
+
+    public static void solution(String[] args) {
+
+    }
 }
