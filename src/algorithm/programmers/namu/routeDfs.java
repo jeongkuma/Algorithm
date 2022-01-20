@@ -37,10 +37,10 @@ public class routeDfs {
 
     public static void dfs(TreeNode root, int level) {
         answer = Math.max(answer, level);
-        if(root.right != null){
+        if (root.right != null) {
             dfs(root.right, level + 1);
         }
-        if(root.left != null){
+        if (root.left != null) {
             dfs(root.left, level + 1);
         }
     }
