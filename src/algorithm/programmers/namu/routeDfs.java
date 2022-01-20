@@ -10,7 +10,7 @@ import java.util.Queue;
  * the longest path from the root node down to the farthest leaf node.
  * Note: A leaf is a node with no children.
  */
-public class route {
+public class routeDfs {
 
     static int answer;
 
