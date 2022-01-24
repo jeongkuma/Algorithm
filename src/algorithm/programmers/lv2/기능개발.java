@@ -59,6 +59,8 @@ public class 기능개발 {
         기능개발 s = new 기능개발();
         s.solution(progresses, speeds);
 
+        practice(progresses, speeds);
+
     }
 
     public static int[] practice(int[] progresses, int[] speeds) {
