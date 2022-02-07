@@ -31,9 +31,6 @@ public class compareString {
                 bRv = false;
             }
         }
-
-
-        System.out.println("bRv ::  " + bRv);
         return bRv;
 
     }
