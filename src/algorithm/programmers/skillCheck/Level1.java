@@ -24,6 +24,15 @@ package algorithm.programmers.skillCheck;
 public class Level1 {
     public static void main(String[] args) {
         System.out.println(practice(122));
+        System.out.println(practice(158));
+        System.out.println(practice(32335));
+        System.out.println(practice(741));
+        System.out.println(practice(12));
+        System.out.println(practice(445));
+        System.out.println(practice(44));
+        System.out.println(practice(55));
+        System.out.println(practice(898));
+        System.out.println(practice(88));
     }
 
     public static long practice(long n) {
