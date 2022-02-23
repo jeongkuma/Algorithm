@@ -2,7 +2,7 @@ package util;
 
 import java.util.Locale;
 
-public class compareString {
+public class CompareString {
 
     public static void main(String[] args) {
         compare("VTS", "VTS", true, true);
