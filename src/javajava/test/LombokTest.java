@@ -22,19 +22,42 @@ public class LombokTest {
 
         log.log(Level.INFO, ent.toString());
 
-        ent = convert(ent);
 
+
+//        ent = setBuilded(ent);
+
+        setVoid(ent);
         log.log(Level.INFO, ent.toString());
 
     }
 
 
-    public static LombokEntity convert(LombokEntity ent) {
+    public static LombokEntity normalBuilded(LombokEntity ent) {
         ent = LombokEntity.builder()
                 .pw("PW2")
                 .build();
         return ent;
 
+    }
+
+
+    public static LombokEntity comeBuilded(LombokEntity ent) {
+        ent = ent.builder()
+                .pw("PW3")
+                .build();
+        return ent;
+
+    }
+
+
+    public static LombokEntity setBuilded(LombokEntity ent) {
+        ent.setPw("PW4");
+        return ent;
+
+    }
+
+    public static void setVoid(LombokEntity ent) {
+        ent.setPw("PW5");
     }
 
 }
