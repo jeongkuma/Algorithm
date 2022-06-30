@@ -8,7 +8,28 @@ import java.util.logging.Level;
 @Log
 public class LombokTest {
     public static void main(String[] args) {
-        lombokTest();
+        LombokEntity lombokEntity = LombokEntity.builder()
+                .id("ID1")
+                .pw("PW1")
+                .build();
+
+        LombokEntity lombokEntity1 = LombokEntity.builder()
+                .id("ID2")
+                .pw("PW2")
+                .lombokEntity(lombokEntity)
+                .build();
+
+        getSetTest(lombokEntity1);
+
+
+    }
+
+    public static void getSetTest(LombokEntity lombokEntity) {
+
+        lombokEntity.getLombokEntity().setId("ID3");
+        lombokEntity.getLombokEntity().setPw("PW3");
+
+        log.log(Level.INFO, "IS ID3 RIGHT?  >   " + lombokEntity.getLombokEntity().getId());
     }
 
     public static void lombokTest(){

@@ -13,6 +13,8 @@ public class LombokEntity {
     private String id;
     private String pw;
 
+    private LombokEntity lombokEntity;
+
     @Override
     public Object clone() {
         Object obj = null;
