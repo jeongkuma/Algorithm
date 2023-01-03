@@ -1,6 +1,5 @@
 package algorithm.programmers.lv1;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -88,5 +87,29 @@ public class 인형뽑기 {
     public int solution(int[][] board, int[] moves) {
         int answer = 0;
         return answer;
+
+        /**
+         *
+         *
+         *
+         *     전체 크기는 N * N
+         *     N = 주어진 office의 수
+         *     온풍기는 k * k
+         *
+         *
+         *
+         *
+         * */
+
+        //      00 01 10 11
+        //      01 02 11 12
+        //      02 03 12 13
+
+        //      10 11 20 21
+        //      11 12 21 22
+        //      12 13 22 23
+
+
+
     }
 }
